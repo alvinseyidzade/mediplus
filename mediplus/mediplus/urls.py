@@ -22,8 +22,9 @@ from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    url(r'^doctor/', include('mediplyus.urls')),
-    url(r'^api/doctor/', include(('mediplyus.api.urls', 'mediplyus' ),namespace="mediplyus-api")),
+
+    url(r'^api/doctor/', include(('Doctor.api.urls', 'Doctor'), namespace="Doctor-api")),
+    url(r'^api/Clinic/', include(('Clinic.api.urls', 'Clinic'), namespace="Clinic-api")),
 
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
