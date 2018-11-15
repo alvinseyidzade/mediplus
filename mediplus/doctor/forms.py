@@ -16,7 +16,7 @@ class DoctorProfile(forms.ModelForm):
 
     class Meta:
         model = Doctor
-        fields = ('age', 'speciality', 'image','Stage')
+        fields = ('age', 'speciality', 'image','Stage','name','Level','clinic')
 
 
 
