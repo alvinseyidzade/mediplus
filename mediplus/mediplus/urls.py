@@ -19,12 +19,14 @@ from django.urls import path
 from django.conf.urls import url,include
 from django.conf.urls.static import static
 from django.conf import settings
+from doctor.views import doctor_register_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    url(r'^api/doctor/', include(('doctor.api.urls', 'Doctor'), namespace="Doctor-api")),
+    url(r'^api/clinic/', include(('clinic.api.urls', 'Clinic'), namespace="Clinic-api")),
+    url(r'^doctor/', include('doctor.urls'))
 
-    url(r'^api/doctor/', include(('Doctor.api.urls', 'Doctor'), namespace="Doctor-api")),
-    url(r'^api/Clinic/', include(('Clinic.api.urls', 'Clinic'), namespace="Clinic-api")),
 
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

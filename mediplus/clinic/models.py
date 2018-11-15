@@ -2,7 +2,6 @@ from django.db import models
 from django.utils.text import slugify
 
 
-
 # Create your models here.
 
 class Clinic(models.Model):
@@ -11,6 +10,7 @@ class Clinic(models.Model):
     name=models.CharField(max_length=120)
     location=models.CharField(max_length=120)
     image=models.ImageField(blank=True)
+
     def __str__(self):
         return self.name
     def get_unique_slug(self):
@@ -25,4 +25,5 @@ class Clinic(models.Model):
     def save(self, *args, **kwargs):
         self.slug = self.get_unique_slug()
         return super(Clinic, self).save(*args, **kwargs)
+
 
