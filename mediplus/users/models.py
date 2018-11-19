@@ -1,6 +1,17 @@
 from django.db import models
-from django.contrib.auth.models import User
+
 # Create your models here.
-from django.contrib.auth.models import User
-from django.contrib.auth.validators import ASCIIUsernameValidator
+from django.contrib.auth.models import AbstractUser
+from django.conf import settings
+
+class User(AbstractUser):
+    is_doctor=models.BooleanField(default=False)
+    is_ordinary=models.BooleanField(default=False)
+
+
+class OrdinaryUser(models.Model):
+    first_name = models.CharField(max_length=120)
+    last_name = models.CharField(max_length=120)
+    user = models.ForeignKey(User , on_delete=models.CASCADE)
+
 

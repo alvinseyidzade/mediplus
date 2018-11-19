@@ -52,7 +52,7 @@ def doctor_login_view(request):
         password=request.POST.get('password')
         user=authenticate(username=username,password=password)
         if user:
-            if user.is_active:
+            if user.is_active and user.is_doctor:
                 login(request,user)
                 return render(request,'success.html')
             else:

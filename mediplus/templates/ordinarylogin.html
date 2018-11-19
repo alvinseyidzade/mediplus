@@ -2,9 +2,20 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
 </head>
 <body>
-$END$
+<h1>LOGIN</h1>
+<form action="{% url 'users:ordinaryuser_login' %}" method="POST">
+    {% csrf_token %}
+    <label for="username"></label>
+    <input type="text" name="username" placeholder="Enter Username">
+
+    <label for="password"></label>
+    <input type="password" name="password" placeholder="Password">
+
+    <input type="submit">
+
+</form>
 </body>
 </html>

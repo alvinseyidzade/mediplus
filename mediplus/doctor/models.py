@@ -1,9 +1,10 @@
 from django.db import models
-from django.contrib.auth.models import User
+
 from django.utils.text import slugify
 from clinic.models import Clinic
 # Create your models here.
-
+from django.contrib.auth import get_user_model
+User = get_user_model()
 
 class Doctor(models.Model):
     name=models.CharField(max_length=120)
@@ -19,10 +20,10 @@ class Doctor(models.Model):
 
     )
     Stage=models.IntegerField(null=True)
-    clinic=models.ManyToManyField(Clinic)
+    clinic=models.ManyToManyField(Clinic, blank=True)
     Level=models.CharField(max_length=150)
     image=models.ImageField(blank=True)
-    user=models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE,null=True)
     slug = models.SlugField(unique=True, default="", editable=False, max_length=130)
     age=models.IntegerField(null=True)
 
