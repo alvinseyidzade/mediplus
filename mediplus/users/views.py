@@ -5,13 +5,13 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import HttpResponse,HttpResponseRedirect
 # Create your views here.
 def user_register_view(request):
-    registered=False
+    registered = False
     user_form = OrdinaryUserForm(data=request.POST)
     profile_form = OrdinaryUserProfile(data=request.POST)
     if request.method == "POST":
 
 
-        if user_form.is_valid() and doctor_profile.is_valid():
+        if user_form.is_valid() and profile_form.is_valid():
             user=user_form.save()
             user.set_password(user.password)
             user.save()
@@ -22,7 +22,7 @@ def user_register_view(request):
         else:
             print("WTF")
     else:
-        user_form = DoctorForm(data=request.POST)
+        user_form = OrdinaryUserForm(data=request.POST)
 
     context={
         'user_form': user_form,

@@ -14,4 +14,6 @@ class OrdinaryUser(models.Model):
     last_name = models.CharField(max_length=120)
     user = models.ForeignKey(User , on_delete=models.CASCADE)
 
+    def __str__(self):
+        return "{name} {surname} ".format(name=self.first_name , surname=self.last_name)
 
