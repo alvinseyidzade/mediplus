@@ -1,7 +1,7 @@
 from rest_framework import generics
 
-from users import models
-from . import serializers
+#from users import models
+#from . import serializers
 
 # class NormalUserListView(generics.ListCreateAPIView):
 #     queryset = models.NormalUser.objects.all()
