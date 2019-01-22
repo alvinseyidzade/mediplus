@@ -27,6 +27,7 @@ urlpatterns = [
     url(r'^api/clinic/', include(('clinic.api.urls', 'Clinic'), namespace="Clinic-api")),
     url(r'^doctor/', include('doctor.urls')),
     url(r'^user/', include('users.urls')),
+    url(r'^api/user/', include('users.api.urls')),
 
 
 ]

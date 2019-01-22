@@ -4,6 +4,10 @@ from .forms import OrdinaryUserForm,OrdinaryUserProfile
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import HttpResponse,HttpResponseRedirect
 # Create your views here.
+
+
+
+
 def user_register_view(request):
     registered = False
     user_form = OrdinaryUserForm(data=request.POST)

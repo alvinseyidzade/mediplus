@@ -17,3 +17,4 @@ class OrdinaryUser(models.Model):
     def __str__(self):
         return "{name} {surname} ".format(name=self.first_name , surname=self.last_name)
 
+
