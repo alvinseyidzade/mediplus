@@ -3,7 +3,9 @@ from doctor.models import Doctor
 from clinic.models import Clinic
 from .serializers import DoctorModelSerializer,DoctorModelCreateSerializer
 from rest_framework.permissions import AllowAny,IsAuthenticated,IsAdminUser
-
+from django.shortcuts import render,HttpResponse,HttpResponseRedirect
+from django.contrib.auth import authenticate,login,logout
+from .permissions import IsOwnerOrReadOnly
 
 class DoctorListAPIView(ListAPIView):
     def get_queryset(self):
@@ -32,8 +34,10 @@ class DoctorDetailAPIView(RetrieveAPIView):
 
 
 class DoctorUpdateAPIView(UpdateAPIView):
+
+
     queryset = Doctor.objects.all()
-    permission_classes=[IsAdminUser]
+    permission_classes = [IsOwnerOrReadOnly]
     serializer_class = DoctorModelSerializer
 
 
@@ -46,7 +50,6 @@ class DoctorCreateAPIView(CreateAPIView):
     queryset = Doctor.objects.all()
     serializer_class = DoctorModelCreateSerializer
     permission_classes = [IsAdminUser]
-
 
 
 

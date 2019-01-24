@@ -4,6 +4,7 @@ from django.views.generic import ListView, DetailView, CreateView, UpdateView, D
 from .forms import DoctorForm,DoctorProfile
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
+
 # Create your views here.
 
 def list_view(request):
@@ -27,8 +28,10 @@ def doctor_register_view(request):
             user=user_form.save()
             user.set_password(user.password)
             user.save()
+
             profile=doctor_profile.save(commit=False)
             profile.user = user
+
             if 'image' in request.FILES:
                 profile.image = request.FILES['image']
             profile.save()
